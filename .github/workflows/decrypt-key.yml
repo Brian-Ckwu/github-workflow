@@ -1,0 +1,16 @@
+name: decrypt-key
+
+on: push
+jobs:
+  key-decryption
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: run the decryption script
+        working-directory: ./apikey
+        run: ./decrypt_key.sh
+        env: 
+          SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
+
+      - name: display the decrypted key (remove this step in production)
+        run: cat ./apikey/decrypted_key.txt
