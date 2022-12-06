@@ -9,7 +9,7 @@ jobs:
       - name: run the decryption script
         working-directory: ./apikey
         run: ./decrypt_key.sh
-        env: 
+        env:
           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
 
       - name: display the decrypted key (remove this step in production)
